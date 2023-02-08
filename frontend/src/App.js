@@ -1,25 +1,25 @@
 import './App.css';
-import handleSubmit from './handles/handlesubmit';
-import { useRef } from 'react';
-import {firestore} from "./firebase_setup/firebase"
- 
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import Health from './pages/Health';
+import Badges from './pages/Badges';
+import Jobs from './pages/Jobs';
+import Profile from './pages/Profile'
+
 function App() {
-  const dataRef = useRef()
- 
-  const submithandler = (e) => {
-    e.preventDefault()
-    handleSubmit(dataRef.current.value)
-    dataRef.current.value = ""
-  }
- 
-  return (
-    <div className="App">
-      <form onSubmit={submithandler}>
-        <input type= "text" ref={dataRef} />
-        <button type = "submit">Save</button>
-      </form>
-    </div>
-  );
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="health" element={<Health />} />
+        <Route path="badges" element={<Badges />} />
+        <Route path="jobs" element={<Jobs />} />
+        <Route path="profile" element={<Profile />} />
+      </Routes>
+    </div>
+  );
 }
- 
+
 export default App;
